@@ -1,0 +1,41 @@
+.homeContainer {
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
+  display: flex;
+}
+
+.rightHome {
+  flex-basis: 50%;
+  background: url("../../assets/background.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.leftHome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 50%;
+  background: grey;
+  text-align: center;
+  color: white;
+}
+
+.leftHome .h1Home {
+  margin-bottom: 30px;
+  font-size: 60px;
+}
+
+.leftHome .homeButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.leftHome .homeButtons .btn {
+  width: 100px;
+  background: white;
+}

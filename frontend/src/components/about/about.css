@@ -1,0 +1,23 @@
+.aboutContainer {
+  min-height: 100vh;
+  width: 100%;
+  height: auto;
+  background: #000000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.h1About {
+  margin: 40px;
+}
+
+.imgAbout {
+  width: auto;
+
+  margin: 20px;
+}
+
+.pAbout {
+  margin: 30px;
+}
