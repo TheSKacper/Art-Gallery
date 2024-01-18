@@ -6,11 +6,13 @@ import axios from "axios";
 const NewProduct = () => {
   const context = useContext(MyContext);
   const [list, setList] = useState([]);
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [img,setImg] = useState("")
-  const [year, setYear] = useState("");
-  const [desc, setDesc] = useState("");
+  const [newItem, setNewItem] = useState({
+    title: "",
+    price: 0,
+    img: "",
+    year: 0,
+    desc: "",
+  });
 
   useEffect(() => {
     getList();
@@ -32,20 +34,21 @@ const NewProduct = () => {
       });
   };
 
+  const handlerItem = (e) => {
+    setNewItem({ ...newItem, [e.target.name]: e.target.value });
+  };
+
   const addNewItem = () => {
-    const newItem = {
-      title: title,
-      price: price,
-      img:img,
-      year: year,
-      desc: desc,
+    const jsonItem = {
+      ...newItem,
       owner: context.data.name,
     };
     try {
       axios
-        .post("http://localhost:3001/api/shop/", newItem)
+        .post("http://localhost:3001/api/shop/", jsonItem)
         .then((response) => {
           console.log(response.data);
+          setNewItem({ title: "", price: 0, img: "", year: 0, desc: "" });
           getList();
         })
         .catch((error) => {
@@ -63,9 +66,10 @@ const NewProduct = () => {
           Title
         </span>
         <input
-          value={title}
           type="text"
-          onChange={(e) => setTitle(e.target.value)}
+          value={newItem.title}
+          onChange={handlerItem}
+          name="title"
           className="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm"
@@ -77,9 +81,10 @@ const NewProduct = () => {
           Price
         </span>
         <input
-          value={price}
           type="text"
-          onChange={(e) => setPrice(e.target.value)}
+          name="price"
+          value={newItem.price}
+          onChange={handlerItem}
           className="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm"
@@ -91,9 +96,10 @@ const NewProduct = () => {
           Img
         </span>
         <input
-          value={img}
           type="text"
-          onChange={(e) => setImg(e.target.value)}
+          value={newItem.img}
+          onChange={handlerItem}
+          name="img"
           className="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm"
@@ -105,9 +111,10 @@ const NewProduct = () => {
           Year
         </span>
         <input
-          value={year}
           type="text"
-          onChange={(e) => setYear(e.target.value)}
+          name="year"
+          value={newItem.year}
+          onChange={handlerItem}
           className="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm"
@@ -118,9 +125,10 @@ const NewProduct = () => {
           Desc
         </span>
         <input
-          value={desc}
           type="text"
-          onChange={(e) => setDesc(e.target.value)}
+          name="desc"
+          value={newItem.desc}
+          onChange={handlerItem}
           className="form-control"
           aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm"

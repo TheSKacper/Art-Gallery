@@ -4,12 +4,12 @@ import axios from "axios";
 
 const ShoppingCart = () => {
   const context = useContext(MyContext);
-  let [count,setCount] = useState(0)
+  let [count, setCount] = useState(0);
 
   useEffect(() => {
     getItems([]);
-  },[]);
-
+  }, []);
+  
   const getItems = () => {
     axios
       .get("http://localhost:3001/api/shop/")
@@ -21,7 +21,7 @@ const ShoppingCart = () => {
 
           if (typeof currentItem === "object") {
             itemArray.push(currentItem);
-            setCount()
+            setCount();
           } else if (typeof currentItem === "string") {
             const filteredItems = response.data.filter(
               (item) => item._id === currentItem

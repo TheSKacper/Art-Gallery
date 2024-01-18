@@ -1,7 +1,7 @@
 .homeContainer {
   min-height: 100vh;
   height: auto;
-  width: 100%;
+  width: auto;
   display: flex;
 }
 
@@ -24,18 +24,19 @@
 }
 
 .leftHome .h1Home {
-  margin-bottom: 30px;
   font-size: 60px;
 }
 
 .leftHome .homeButtons {
-  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   width: 300px;
+  margin-inline: block;
+  margin-bottom: 20px;
 }
 
 .leftHome .homeButtons .btn {
   width: 100px;
   background: white;
+  margin: 10px;
 }

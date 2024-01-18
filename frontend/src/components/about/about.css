@@ -13,11 +13,18 @@
 }
 
 .imgAbout {
-  width: auto;
-
-  margin: 20px;
+  display: block;
+  max-width: 100%;
 }
 
 .pAbout {
+  max-width: 100%;
+  margin-inline: auto;
   margin: 30px;
+}
+
+.picturesAbout {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
