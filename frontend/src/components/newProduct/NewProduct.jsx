@@ -59,91 +59,181 @@ const NewProduct = () => {
     }
   };
 
+  const deleteItem = (id) => {
+    console.log(id);
+    try {
+      axios
+        .delete("http://localhost:3001/api/shop/" + id)
+        .then((response) => {
+          alert("deleted");
+          getList();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
-      <div className="input-group input-group-sm mb-3">
-        <span className="input-group-text" id="inputGroup-sizing-sm">
-          Title
-        </span>
-        <input
-          type="text"
-          value={newItem.title}
-          onChange={handlerItem}
-          name="title"
-          className="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-      </div>
-
-      <div className="input-group input-group-sm mb-3">
-        <span className="input-group-text" id="inputGroup-sizing-sm">
-          Price
-        </span>
-        <input
-          type="text"
-          name="price"
-          value={newItem.price}
-          onChange={handlerItem}
-          className="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-      </div>
-
-      <div className="input-group input-group-sm mb-3">
-        <span className="input-group-text" id="inputGroup-sizing-sm">
-          Img
-        </span>
-        <input
-          type="text"
-          value={newItem.img}
-          onChange={handlerItem}
-          name="img"
-          className="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-      </div>
-
-      <div className="input-group input-group-sm mb-3">
-        <span className="input-group-text" id="inputGroup-sizing-sm">
-          Year
-        </span>
-        <input
-          type="text"
-          name="year"
-          value={newItem.year}
-          onChange={handlerItem}
-          className="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-      </div>
-      <div className="input-group input-group-sm mb-3">
-        <span className="input-group-text" id="inputGroup-sizing-sm">
-          Desc
-        </span>
-        <input
-          type="text"
-          name="desc"
-          value={newItem.desc}
-          onChange={handlerItem}
-          className="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm"
-        />
-      </div>
-
-      <button className="btn btn-primary" onClick={addNewItem}>
-        Add
-      </button>
-
-      {list.map((item) => (
-        <div key={item._id}>
-          {item.title} || {item.desc} || {item.price} || {item.year}
+      <div className="containerNewProduct">
+        <div className="addButton">
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            ADD PRODUCT
+          </button>
         </div>
-      ))}
+        <table>
+          <tr>
+            <th>title</th>
+            <th>price</th>
+            <th>Img</th>
+            <th>Year</th>
+            <th>Desc</th>
+            <th>Delete</th>
+          </tr>
+          {list.map((item) => (
+            <tr key={item._id}>
+              <td>{item.title}</td>
+              <td>{item.price}</td>
+              <td>{item.img}</td>
+              <td>{item.year}</td>
+              <td className="desc">{item.desc}</td>
+              <td>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteItem(item._id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </table>
+      </div>
+
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                ADD PRODUCT
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div className="input-group input-group-sm mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Title
+                </span>
+                <input
+                  type="text"
+                  value={newItem.title}
+                  onChange={handlerItem}
+                  name="title"
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+
+              <div className="input-group input-group-sm mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Price
+                </span>
+                <input
+                  type="text"
+                  name="price"
+                  value={newItem.price}
+                  onChange={handlerItem}
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+
+              <div className="input-group input-group-sm mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Img
+                </span>
+                <input
+                  type="text"
+                  value={newItem.img}
+                  onChange={handlerItem}
+                  name="img"
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+
+              <div className="input-group input-group-sm mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Year
+                </span>
+                <input
+                  type="text"
+                  name="year"
+                  value={newItem.year}
+                  onChange={handlerItem}
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+              <div className="input-group input-group-sm mb-3">
+                <span className="input-group-text" id="inputGroup-sizing-sm">
+                  Desc
+                </span>
+                <input
+                  type="text"
+                  name="desc"
+                  value={newItem.desc}
+                  onChange={handlerItem}
+                  className="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                className="btn btn-primary"
+                data-bs-dismiss="modal"
+                onClick={addNewItem}
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

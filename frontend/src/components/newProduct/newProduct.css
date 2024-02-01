@@ -1,0 +1,50 @@
+.containerNewProduct {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.containerNewProduct .addButton {
+  width: 100%;
+}
+
+.containerNewProduct .addButton .btn {
+  margin: 20px;
+  float: right;
+  background-color: slateblue;
+  color: white;
+  font-weight: 900;
+}
+
+.containerNewProduct table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.containerNewProduct .desc {
+  max-width: 150px;
+  word-wrap: break-word;
+}
+
+.containerNewProduct td,
+th {
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.containerNewProduct th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04aa6d;
+  color: white;
+}
+
+.containerNewProduct tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.containerNewProduct tr:hover {
+  background-color: #ddd;
+}

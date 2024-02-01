@@ -1,0 +1,18 @@
+.containerShop {
+  min-height: 100vh;
+  display: flex;
+  background: black;
+}
+
+.containerShop .card {
+  text-align: center;
+  min-width: 200px;
+  max-height: 400px;
+  margin: 10px;
+}
+
+.containerShop .card .btn {
+  color: white;
+  font-weight: 900;
+  background-color: black;
+}

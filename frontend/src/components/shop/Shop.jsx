@@ -53,20 +53,24 @@ const Shop = () => {
   };
 
   return (
-    <div className="container">
+    <div className="containerShop">
       {listOfPaints.map((item) => (
         <div key={item._id} className="card">
           <div className="card-body">
-            <h5 className="card-title">{item.title}</h5>
-            <h5 className="card-title">{item.owner}</h5>
-            <h5 className="card-title">{item.year}</h5>
-            <h5 className="card-title">{item.price}</h5>
-            <p className="card-text">{item.desc}</p>
+            <h5 className="card-title">Title: {item.title}</h5>
+            <hr />
+            <h5 className="card-title">Owner:  {item.owner}</h5>
+            <hr />
+            <h5 className="card-title">Year:  {item.year}</h5>
+            <hr />
+            <h5 className="card-title">Price:  {item.price}</h5>
+            <hr />
+            <p className="card-text">Desc:  {item.desc}</p>
             {context.data.isLogin === true ? (
-              <button onClick={(e) => addPaint(e, item._id)}>Add</button>
+              <button className="btn" onClick={(e) => addPaint(e, item._id)}>Add</button>
             ) : null}
             {context.data.role === "admin" ? (
-              <button onClick={() => deletePaint(item._id)}>Delete</button>
+              <button className="btn" onClick={() => deletePaint(item._id)}>Delete</button>
             ) : null}
           </div>
         </div>

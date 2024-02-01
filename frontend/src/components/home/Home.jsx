@@ -10,7 +10,7 @@ const Home = () => {
     <div className="homeContainer">
       <div className="leftHome">
         <h1 className="h1Home">KS art gallery</h1>
-        <p className="m-5">
+        <p className="pHome m-5">
           Welcome to KS art gallery – where art meets passion! <br /><br /> Awaken your
           creativity and discover unique works of art that speak to the soul. At
           KS art gallery, we provide artists and creators with the opportunity to

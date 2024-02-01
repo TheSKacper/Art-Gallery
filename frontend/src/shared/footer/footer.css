@@ -1,0 +1,9 @@
+.containerFooter {
+  background-color: black;
+  padding: 20px;
+  box-shadow: 2px 4px 7px 7px;
+}
+.footerh1 {
+  text-align: center;
+  color: white;
+}

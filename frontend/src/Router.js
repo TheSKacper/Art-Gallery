@@ -7,6 +7,7 @@ import Navbar from "./shared/navbar/NavBar.jsx";
 import ShoppingCard from './components/shoppingCard/Shopping.jsx'
 import Verification from "./components/verification/Verification.jsx"
 import NewProduct from "./components/newProduct/NewProduct.jsx";
+import Footer from "./shared/footer/Footer.jsx";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/verification" element={<Verification/>}></Route>
         <Route path="/newProduct" element={<NewProduct/>}></Route>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

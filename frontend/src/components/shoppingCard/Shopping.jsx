@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { MyContext } from "../../context/Context";
 import axios from "axios";
+import './shopping.css'
 
 const ShoppingCart = () => {
   const context = useContext(MyContext);
-  let [count, setCount] = useState(0);
 
   useEffect(() => {
     getItems([]);
@@ -21,7 +21,6 @@ const ShoppingCart = () => {
 
           if (typeof currentItem === "object") {
             itemArray.push(currentItem);
-            setCount();
           } else if (typeof currentItem === "string") {
             const filteredItems = response.data.filter(
               (item) => item._id === currentItem
@@ -46,14 +45,14 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div>
+    <div className="containerShopping">
       {context.data.shop.map((item, index) => (
         <div key={index} className="card">
           <div className="card-body">
-            <h5 className="card-title">{item.title}</h5>
-            <p className="card-text">{item.desc}</p>
-            <p>{item.price}</p>
-            <button onClick={() => deleteItem(index)}>Delete</button>
+            <h5 className="card-title">Title: {item.title}</h5>
+            <p className="card-text">Desc: {item.desc}</p>
+            <p>Price: {item.price}</p>
+            <button className="btn btn-danger" onClick={() => deleteItem(index)}>Delete</button>
           </div>
         </div>
       ))}

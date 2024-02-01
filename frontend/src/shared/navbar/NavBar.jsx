@@ -1,22 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "../../context/Context";
 import { useNavigate } from "react-router-dom";
+import "./navbar.css";
 
 const Navbar = () => {
   const context = useContext(MyContext);
   const navigation = useNavigate();
+  const [selection,setSelection] = useState('home')
 
   const logOut = () => {
-    context.setData({ isLogin: false, name: "", role: "",shopping:[], isShop:false });
+    context.setData({
+      isLogin: false,
+      name: "",
+      role: "",
+      shopping: [],
+      isShop: false,
+    });
     navigation("/");
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          KS
+        <Link className="navbar-brand" to="/" onClick={() => setSelection('home')}>
+          KS art gallery
         </Link>
         <button
           className="navbar-toggler"
@@ -32,40 +40,44 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className={selection === 'home' ? "nav-link text-primary" : "nav-link"} aria-current="page" to="/" onClick={() => setSelection('home')}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link className={selection === 'about' ? "nav-link text-primary" : "nav-link"} to="/about" onClick={() => setSelection('about')}>
                 About
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/shop">
+              <Link className={selection === 'shop' ? "nav-link text-primary" : "nav-link"} to="/shop" onClick={() => setSelection('shop')}>
                 Shop
               </Link>
             </li>
             {context.data.role === "admin" ? (
               <li className="nav-item">
-                <Link className="nav-link" to="/verification">
+                <Link className={selection === 'verification' ? "nav-link text-primary" : "nav-link"} to="/verification" onClick={() => setSelection('verification')}>
                   Verification
                 </Link>
               </li>
             ) : null}
             {context.data.isShop === true ? (
               <li className="nav-item">
-                <Link className="nav-link" to="/shoppingCard">
+                <Link className={selection === 'shopping card' ? "nav-link text-primary" : "nav-link"} to="/shoppingCard" onClick={() => setSelection('shopping card')}>
                   Shopping Card
                 </Link>
               </li>
             ) : null}
-            {context.data.role === 'user' ? <li className="nav-item">
-              <Link className="nav-link" to='/newProduct'>Your items</Link>
-            </li> : null}
+            {context.data.role === "user" ? (
+              <li className="nav-item">
+                <Link className={selection === 'your items' ? "nav-link text-primary" : "nav-link"} to="/newProduct" onClick={() => setSelection('your items')}>
+                  Your items
+                </Link>
+              </li>
+            ) : null}
             {context.data.isLogin === false ? (
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+                <Link className={selection === 'login' ? "nav-link text-primary" : "nav-link"} to="/login" onClick={() => setSelection('login')}>
                   Login
                 </Link>
               </li>
