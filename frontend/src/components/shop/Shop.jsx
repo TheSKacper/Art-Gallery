@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import "./shop.css";
 import axios from "axios";
 import { MyContext } from "../../context/Context";
+import { useNavigate } from "react-router-dom";
 
 const Shop = () => {
   const [listOfPaints, setListOfPaints] = useState([]);
   const context = useContext(MyContext);
+  const navigate = useNavigate();
   console.log(context.data);
   useEffect(() => {
     getAllPictures();
@@ -16,6 +18,7 @@ const Shop = () => {
       axios
         .get("http://localhost:3001/api/shop/")
         .then((resposnse) => {
+          console.log(resposnse.data);
           setListOfPaints(
             resposnse.data.filter((item) => item.veryfi === true)
           );
@@ -46,10 +49,16 @@ const Shop = () => {
 
   const addPaint = (e, id) => {
     e.preventDefault();
-    const updatedShop = Array.isArray(context.data.shop)
-      ? [...context.data.shop, id]
-      : [id];
-    context.setData({ ...context.data, isShop: true, shop: updatedShop });
+
+    if (context.data.isLogin === false) {
+      alert('To buy anything you have to have your account')
+      navigate("/login");
+    } else if (context.data.isLogin === true) {
+      const updatedShop = Array.isArray(context.data.shop)
+        ? [...context.data.shop, id]
+        : [id];
+      context.setData({ ...context.data, isShop: true, shop: updatedShop });
+    }
   };
 
   return (
@@ -57,20 +66,20 @@ const Shop = () => {
       {listOfPaints.map((item) => (
         <div key={item._id} className="card">
           <div className="card-body">
-            <h5 className="card-title">Title: {item.title}</h5>
+            <img src={item.img} alt={item.img} />
+            <h1> {item.title} </h1>
             <hr />
-            <h5 className="card-title">Owner:  {item.owner}</h5>
-            <hr />
-            <h5 className="card-title">Year:  {item.year}</h5>
-            <hr />
-            <h5 className="card-title">Price:  {item.price}</h5>
-            <hr />
-            <p className="card-text">Desc:  {item.desc}</p>
-            {context.data.isLogin === true ? (
-              <button className="btn" onClick={(e) => addPaint(e, item._id)}>Add</button>
-            ) : null}
+            <p>{item.owner}</p>
+            <button className="btn" onClick={(e) => addPaint(e, item._id)}>
+              Add
+            </button>
             {context.data.role === "admin" ? (
-              <button className="btn" onClick={() => deletePaint(item._id)}>Delete</button>
+              <button
+                className="btn mt-2"
+                onClick={() => deletePaint(item._id)}
+              >
+                Delete
+              </button>
             ) : null}
           </div>
         </div>
