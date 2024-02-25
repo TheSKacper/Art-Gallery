@@ -1,22 +1,22 @@
-.navbar
-{
-    background-color: black;
-    box-shadow: 2px 4px 7px;
+.navbar {
+  background-color: black;
+  box-shadow: 2px 4px 7px;
 }
 
-.nav-link,.navbar-brand
-{
-    color: white;
-    font-weight: 900;
+.nav-link,
+.navbar-brand {
+  color: white;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.navbar-toggler
-{
-    background-color: white;
+.navbar-toggler {
+  background-color: white;
 }
 
-.nav-link:hover, .navbar-brand:hover
-{
-    color: antiquewhite;
-    transform: translateY(-4px);
+.nav-link:hover,
+.navbar-brand:hover {
+  color: antiquewhite;
+  transform: translateY(-4px);
 }

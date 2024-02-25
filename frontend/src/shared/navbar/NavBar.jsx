@@ -21,10 +21,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg sticky-top">
+      <div className="container">
         <Link className="navbar-brand" to="/" onClick={() => setSelection('home')}>
-          KS art gallery
+        <i class="bi bi-easel-fill"></i>   KS art gallery
         </Link>
         <button
           className="navbar-toggler"

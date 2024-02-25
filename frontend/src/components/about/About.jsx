@@ -1,13 +1,20 @@
-import React from "react";
-import "./about.css";
-import picture from "../../assets/background.jpg";
+import React from 'react';
+import './about.css';
+import picture1 from '../../assets/gallery-3114279_1280.jpg';
+import picture2 from '../../assets/istanbul-168774_1280.jpg';
 
 const About = () => {
   return (
-    <div className="aboutContainer">
-      <div className="upAbout">
-        <h1 className="h1About">About KS art gallery</h1>
-        <p className="pAbout">
+    <div className='about bg-black h-100'>
+      <div className='container py-5'>
+        <h2
+          className='text-white text-uppercase fw-bold'
+          data-aos='fade-up'
+          data-aos-delay='200'
+        >
+          About KS art gallery
+        </h2>
+        <p className='text-white mt-3' data-aos='fade-up' data-aos-delay='300'>
           Welcome to our art gallery, a captivating space where creativity and
           expression converge to form a rich tapestry of visual experiences. Our
           gallery is a haven for art enthusiasts and connoisseurs alike,
@@ -36,47 +43,31 @@ const About = () => {
           the walls of our gallery serve as a canvas for the boundless
           possibilities that art offers.
         </p>
-      </div>
-      <div className="middleAbout">
-        <h1 className="h1About">Our gallery</h1>
-        <div className="picturesAbout">
-          <img className="imgAbout" src={picture} alt="" />
-          <img className="imgAbout" src={picture} alt="" />
-          <img className="imgAbout" src={picture} alt="" />
-          <img className="imgAbout" src={picture} alt="" />
+
+        <div class='row' data-aos='fade-up' data-aos-delay='300'>
+          <div class='col-sm-6 mb-3 mb-sm-0'>
+            <div class='card'>
+              <div class='card-body'>
+                <img src={picture1} class='card-img-top' alt='galeria' />
+              </div>
+            </div>
+          </div>
+          <div class='col-sm-6'>
+            <div class='card'>
+              <div class='card-body'>
+                <img src={picture2} class='card-img-top' alt='galeria' />
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="pAbout">
-          Welcome to "Our Gallery," a visual sanctuary where moments are frozen
-          in time, each photograph capturing a story, an emotion, or a fleeting
-          glimpse of the extraordinary. This curated collection of images serves
-          as a testament to the artistry of our photographers, who skillfully
-          wield their lenses to paint a vivid narrative. <br />
-          <br /> As you peruse the gallery's walls, you'll encounter a symphony
-          of visuals that traverse diverse landscapes, emotions, and
-          perspectives. From the mesmerizing play of light and shadow to the
-          candid beauty of human expressions, each photograph invites you to
-          witness the world through the discerning eyes of our talented
-          contributors. <br />
-          <br /> Our gallery is not merely a space for passive observation; it's
-          an immersive experience that encourages contemplation and connection.
-          Each image beckons you to delve deeper, inviting you to explore the
-          intricacies, the nuances, and the untold stories behind the lens.{" "}
-          <br />
-          <br /> Whether it's the arresting beauty of nature, the bustling
-          energy of urban life, or the intimate moments captured in portraits,
-          our gallery seeks to evoke a spectrum of emotions. Through the lens,
-          we invite you to embark on a visual journey that transcends the
-          boundaries of time and space. <br />
-          <br /> These images are more than just pictures; they are windows into
-          the soul of our shared human experience. So, step into "Our Gallery"
-          and allow the images to speak to you, to transport you, and to
-          celebrate the rich tapestry of life encapsulated within each frame.
-        </p>
-      </div>
-      <div className="downAbout">
-        <h1 className="h1About">Owner</h1>
-        <img className="imgAbout" src={picture} alt="" />
-        <p className="pAbout">
+        <h2
+          className='text-white text-uppercase fw-bold mt-5'
+          data-aos='fade-up'
+          data-aos-delay='200'
+        >
+          About Owner
+        </h2>
+        <p className='text-white mt-3' data-aos='fade-up' data-aos-delay='300'>
           As the driving force and creative visionary behind our gallery, Kacper
           brings a passion for art and a keen eye for talent to the forefront.
           With a deep appreciation for diverse artistic expressions, Kacper

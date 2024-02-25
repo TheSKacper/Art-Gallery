@@ -1,57 +1,72 @@
-.homeContainer {
+header {
   min-height: 100vh;
   height: auto;
   width: auto;
-  display: flex;
-}
-
-.rightHome {
-  flex-basis: 50%;
-  background: url("../../assets/background.jpg") no-repeat;
-  background-position: center;
+  background-image: url('../../assets/istanbul-168774_1280.jpg');
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.leftHome {
+.box-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.box-home a {
+  text-decoration: none;
+  color: white;
+  border: 2px solid white;
+  transition: background-color 1s;
+}
+
+.box-home a:hover {
+  background-color: slateblue;
+  border: 2px solid white;
+}
+
+.homeContainer h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.carousel-item img {
+  height: 600px;
+}
+
+.order-item {
+  box-shadow: 2px 3px 5px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-basis: 50%;
-  background: grey;
-  text-align: center;
-  color: white;
+  cursor: pointer;
+  transition: background-color 1s;
+  margin-top: 20px;
 }
 
-.leftHome .h1Home {
-  font-size: 60px;
+.order-item i {
+  font-size: 30px;
+}
+
+.order-item p {
+  text-transform: uppercase;
   font-weight: 900;
+  font-size: 25px;
 }
 
-.leftHome .pHome
-{
-  font-weight: bold;
-} 
-
-.leftHome .homeButtons {
-  display: flex;
-  justify-content: space-between;
-  width: 300px;
-  margin-inline: block;
-  margin-bottom: 20px;
-}
-
-.leftHome .homeButtons .btn {
-  width: 100px;
-  background: slateblue;
-  color: white;
-  font-weight: 900;
-  padding: 10px;
-  margin: 10px;
-  transition: transform 0.2s ease-in-out;
-}
-
-.leftHome .homeButtons .btn:hover 
-{
-  transform: translateY(-4px);
+.order-item:hover {
+  background-color: slateblue;
 }
