@@ -21,7 +21,7 @@ const Login = () => {
           .then((response) => {
             if (response.data.token) {
               navigation("/");
-              console.log(data)
+              context.notify('Welcome ' + login, {type:'success'} )
               context.setData({
                 role: response.data.role,
                 name: login,
@@ -30,6 +30,7 @@ const Login = () => {
             }
           })
           .catch((error) => {
+            context.notify('Wrong login or password', {type:'error'})
             console.log(error);
           });
       } catch (error) {
@@ -40,11 +41,13 @@ const Login = () => {
         axios
           .post("http://localhost:3001/api/user/", data)
           .then((response) => {
-            console.log("Welcome !");
+            context.notify('Registed', {type:'success'} )
             navigation("/");
             console.log(data)
           })
           .catch((error) => {
+            context.notify('Something wrong', {type:'error'})
+            console.log(error);
             console.log(error);
           });
       } catch (error) {

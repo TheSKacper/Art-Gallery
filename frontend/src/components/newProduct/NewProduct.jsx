@@ -65,7 +65,7 @@ const NewProduct = () => {
       axios
         .delete("http://localhost:3001/api/shop/" + id)
         .then((response) => {
-          alert("deleted");
+          context.notify('Deleted',{ type: 'success'})
           getList();
         })
         .catch((error) => {
@@ -104,7 +104,7 @@ const NewProduct = () => {
               <td>{item.price}</td>
               <td>{item.img}</td>
               <td>{item.year}</td>
-              <td className="desc">{item.desc}</td>
+              <td>{item.desc}</td>
               <td>
                 <button
                   className="btn btn-danger"

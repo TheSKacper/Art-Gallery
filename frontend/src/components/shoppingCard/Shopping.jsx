@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
-import { MyContext } from "../../context/Context";
-import axios from "axios";
-import './shopping.css'
+import React, { useContext, useEffect } from 'react';
+import { MyContext } from '../../context/Context';
+import axios from 'axios';
+import './shopping.css';
 
 const ShoppingCart = () => {
   const context = useContext(MyContext);
@@ -9,19 +9,19 @@ const ShoppingCart = () => {
   useEffect(() => {
     getItems([]);
   }, []);
-  
+
   const getItems = () => {
     axios
-      .get("http://localhost:3001/api/shop/")
+      .get('http://localhost:3001/api/shop/')
       .then((response) => {
         const itemArray = [];
 
         for (let i = 0; i < context.data.shop.length; i++) {
           const currentItem = context.data.shop[i];
 
-          if (typeof currentItem === "object") {
+          if (typeof currentItem === 'object') {
             itemArray.push(currentItem);
-          } else if (typeof currentItem === "string") {
+          } else if (typeof currentItem === 'string') {
             const filteredItems = response.data.filter(
               (item) => item._id === currentItem
             );
@@ -45,17 +45,27 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div className="containerShopping">
-      {context.data.shop.map((item, index) => (
-        <div key={index} className="card">
-          <div className="card-body">
-            <h5 className="card-title">Title: {item.title}</h5>
-            <p className="card-text">Desc: {item.desc}</p>
-            <p>Price: {item.price}</p>
-            <button className="btn btn-danger" onClick={() => deleteItem(index)}>Delete</button>
+    <div className='containerShopping'>
+      <div className='row text-center'>
+        {context.data.shop.map((item, index) => (
+          <div className='col-md-4'>
+            <div key={item._id} className='card '>
+              <img src={item.img} className='card-img-top' alt={item.title} />
+              <div className='card-body'>
+                <h5 className='card-title'>{item.title}</h5>
+                <p className='card-owner'>Mr/Ms {item.owner}</p>
+                <p className='card-price'>{item.price}$</p>
+                <button
+                  className='btn btn-danger'
+                  onClick={() => deleteItem(index)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

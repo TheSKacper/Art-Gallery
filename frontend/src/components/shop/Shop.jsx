@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import "./shop.css";
-import axios from "axios";
-import { MyContext } from "../../context/Context";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react';
+import './shop.css';
+import axios from 'axios';
+import { MyContext } from '../../context/Context';
+import { useNavigate } from 'react-router-dom';
 
 const Shop = () => {
   const [listOfPaints, setListOfPaints] = useState([]);
@@ -16,7 +16,7 @@ const Shop = () => {
   const getAllPictures = () => {
     try {
       axios
-        .get("http://localhost:3001/api/shop/")
+        .get('http://localhost:3001/api/shop/')
         .then((resposnse) => {
           console.log(resposnse.data);
           setListOfPaints(
@@ -32,28 +32,28 @@ const Shop = () => {
   };
 
   const deletePaint = (id) => {
-    try {
-      axios
-        .delete("http://localhost:3001/api/shop/" + id)
-        .then((response) => {
-          console.log("deleted");
-          getAllPictures();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
+      try {
+        axios
+          .delete('http://localhost:3001/api/shop/' + id)
+          .then((response) => {
+            console.log('deleted');
+            getAllPictures();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
   };
 
   const addPaint = (e, id) => {
     e.preventDefault();
-
     if (context.data.isLogin === false) {
-      alert('To buy anything you have to have your account')
-      navigate("/login");
+      context.notify('To buy anything you have to have your account',{type: 'error'})
+      navigate('/login');
     } else if (context.data.isLogin === true) {
+      context.notify('Added', { type: 'success' });
       const updatedShop = Array.isArray(context.data.shop)
         ? [...context.data.shop, id]
         : [id];
@@ -62,28 +62,76 @@ const Shop = () => {
   };
 
   return (
-    <div className="containerShop">
-      {listOfPaints.map((item) => (
-        <div key={item._id} className="card">
-          <div className="card-body">
-            <img src={item.img} alt={item.img} />
-            <h1> {item.title} </h1>
-            <hr />
-            <p>{item.owner}</p>
-            <button className="btn" onClick={(e) => addPaint(e, item._id)}>
-              Add
-            </button>
-            {context.data.role === "admin" ? (
-              <button
-                className="btn mt-2"
-                onClick={() => deletePaint(item._id)}
-              >
+    <div className='containerShop'>
+      <div className='container box-shop'>
+        <div className='row text-center'>
+          {listOfPaints.map((item) => (
+            <div key={item._id} className='col-md-4'>
+              <div className='card'>
+                <img src={item.img} className='card-img-top' alt={item.title} />
+                <div className='card-body'>
+                  <h5 className='card-title'>{item.title}</h5>
+                  <p className='card-owner'>Mr/Ms {item.owner}</p>
+                  <p className='card-price'>{item.price}$</p>
+                  <button
+                    onClick={(e) => addPaint(e, item._id)}
+                    className='btn btnShop'
+                  >
+                    Buy
+                  </button>
+                </div>
+              
+                {context.data.role === 'admin' ? (
+                  <button
+                    className='btn btnShopDelete'
+                    data-bs-toggle='modal'
+                    data-bs-target='#exampleModal'
+                  >
+                    X
+                  </button>
+                ) : null}
+              </div>
+              <div
+        className='modal fade'
+        id='exampleModal'
+        aria-labelledby='exampleModalLabel'
+        aria-hidden='true'
+      >
+        <div className='modal-dialog text-uppercase'>
+          <div className='modal-content'>
+            <div className='modal-header'>
+              <h1 className='modal-title fs-5 text-uppercase title-modal' id='exampleModalLabel'>
                 Delete
+              </h1>
+              <button
+                type='button'
+                className='btn-close'
+                data-bs-dismiss='modal'
+                tabindex="-1"
+                aria-label='Close'
+              ></button>
+            </div>
+            <div className='modal-body'>Are you sure to delete this item ?</div>
+            <div className='modal-footer'>
+              <button
+                type='button'
+                className='btn btn-secondary'
+                data-bs-dismiss='modal'
+              >
+                No
               </button>
-            ) : null}
+              <button type='button' className='btn btn-danger'  onClick={() => deletePaint(item._id)}>
+                Yes
+              </button>
+            </div>
           </div>
+          
         </div>
-      ))}
+      </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

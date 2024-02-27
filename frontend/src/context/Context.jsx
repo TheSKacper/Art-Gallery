@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from 'react-toastify';
 
 const MyContext = createContext();
 
@@ -11,8 +12,10 @@ const MyProvider = (props) => {
     shop: [],
   });
 
+  const notify = (text,option) => toast(text,option);
+
   return (
-    <MyContext.Provider value={{ data, setData }}>
+    <MyContext.Provider value={{ data, setData,notify }}>
       {props.children}
     </MyContext.Provider>
   );

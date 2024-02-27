@@ -1,16 +1,5 @@
 .containerShopping
 {
-    height: 100vh;  
-    display: flex;  
+    height: 100vh;   
 }
 
-.containerShopping .card
-{
-    border: 2px solid black;
-    background-color: slateblue;
-    font-weight: 900;
-    min-width: 400px;
-    max-height: 200px;
-    margin: 20px;
-    text-align: center;
-}

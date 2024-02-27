@@ -21,10 +21,7 @@
   width: 100%;
   border-collapse: collapse;
 }
-.containerNewProduct .desc {
-  max-width: 150px;
-  word-wrap: break-word;
-}
+
 
 .containerNewProduct td,
 th {

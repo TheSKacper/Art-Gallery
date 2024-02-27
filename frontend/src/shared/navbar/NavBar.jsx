@@ -17,6 +17,7 @@ const Navbar = () => {
       shopping: [],
       isShop: false,
     });
+    context.notify('GoodBye :D', {type:'success'})
     navigation("/");
   };
 

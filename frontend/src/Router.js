@@ -8,6 +8,9 @@ import ShoppingCard from './components/shoppingCard/Shopping.jsx';
 import Verification from './components/verification/Verification.jsx';
 import NewProduct from './components/newProduct/NewProduct.jsx';
 import Footer from './shared/footer/Footer.jsx';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer } from 'react-toastify';
 
 function Router() {
   return (
@@ -23,6 +26,7 @@ function Router() {
         <Route path='/newProduct' element={<NewProduct />}></Route>
       </Routes>
       <Footer />
+      <ToastContainer autoClose={1000} pauseOnHover={false} />
     </BrowserRouter>
   );
 }
