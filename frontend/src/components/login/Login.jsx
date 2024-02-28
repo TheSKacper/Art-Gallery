@@ -58,7 +58,7 @@ const Login = () => {
 
   return (
     <div className="containerLogin">
-      <div className="leftSide">
+      <div className="leftSide" data-aos='fade-up' data-aos-delay='200'>
         <h1>Welcome</h1>
         {isRegister === false ? (
           <p>If you don't have an account ? create it now</p>
@@ -75,7 +75,7 @@ const Login = () => {
           </button>
         )}
       </div>
-      <div className="rightSide">
+      <div className="rightSide" data-aos='fade-up' data-aos-delay='300'>
         {isRegister === false ? <h1>Login</h1> : <h1>Register</h1>}
         <form className="loginForm" onSubmit={(e) => loginSubmit(e)}>
           <div className="mb-3">

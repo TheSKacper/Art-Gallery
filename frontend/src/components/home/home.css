@@ -25,14 +25,14 @@ header {
 
 .box-home a {
   text-decoration: none;
-  color: white;
-  border: 2px solid white;
+  letter-spacing: 2px;
+  color: black;
+  background-color: white;
   transition: background-color 1s;
 }
 
 .box-home a:hover {
   background-color: slateblue;
-  border: 2px solid white;
 }
 
 .homeContainer h2 {

@@ -26,7 +26,7 @@ function Router() {
         <Route path='/newProduct' element={<NewProduct />}></Route>
       </Routes>
       <Footer />
-      <ToastContainer autoClose={1000} pauseOnHover={false} />
+      <ToastContainer autoClose={2000} pauseOnHover={false} position="bottom-right"/>
     </BrowserRouter>
   );
 }
