@@ -10,6 +10,7 @@ const MyProvider = (props) => {
     name: "",
     role: "",
     shop: [],
+    count: 0 
   });
 
   const notify = (text,option) => toast(text,option);

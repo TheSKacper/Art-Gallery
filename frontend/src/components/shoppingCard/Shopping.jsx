@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../context/Context';
 import axios from 'axios';
 import './shopping.css';
@@ -9,6 +9,8 @@ const ShoppingCart = () => {
   useEffect(() => {
     getItems([]);
   }, []);
+
+  console.log(context.data.count)
 
   const getItems = () => {
     axios
