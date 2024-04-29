@@ -45,3 +45,8 @@ th {
 .containerNewProduct tr:hover {
   background-color: #ddd;
 }
+
+.imgNewProduct
+{
+  width: 100px;
+}

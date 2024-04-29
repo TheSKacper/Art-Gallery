@@ -103,7 +103,7 @@ const NewProduct = () => {
             <tr key={item._id}>
               <td>{item.title}</td>
               <td>{item.price}</td>
-              <td>{item.img}</td>
+              <td><img className="imgNewProduct" src={item.img} alt={item.title} /></td>
               <td>{item.year}</td>
               <td>{item.desc}</td>
               <td>{item.veryfi ? "true" : "false"}</td>
