@@ -96,6 +96,7 @@ const NewProduct = () => {
             <th>Img</th>
             <th>Year</th>
             <th>Desc</th>
+            <th>Veryfi</th>
             <th>Delete</th>
           </tr>
           {list.map((item) => (
@@ -105,6 +106,7 @@ const NewProduct = () => {
               <td>{item.img}</td>
               <td>{item.year}</td>
               <td>{item.desc}</td>
+              <td>{item.veryfi ? "true" : "false"}</td>
               <td>
                 <button
                   className="btn btn-danger"

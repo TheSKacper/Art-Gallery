@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect} from 'react';
 import { MyContext } from '../../context/Context';
 import axios from 'axios';
 import './shopping.css';
@@ -49,6 +49,7 @@ const ShoppingCart = () => {
   return (
     <div className='containerShopping'>
       <div className='row text-center'>
+        <h2 className='text-center'>{context.data.count}</h2>
         {context.data.shop.map((item, index) => (
           <div className='col-md-4'>
             <div key={item._id} className='card '>

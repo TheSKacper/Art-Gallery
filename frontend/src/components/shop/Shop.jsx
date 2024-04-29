@@ -60,13 +60,14 @@ const Shop = () => {
         : [id];
       let priceArray = listOfPaints
         .filter((shop) => shop._id === id)
-        .map((shop) => parseFloat(shop.price));
-
-      let price = priceArray.length > 0 ? priceArray[0] : 0;
-      console.log(price)
+        .map((shop) => parseInt(shop.price));
+        
+      let price = parseInt(priceArray)
+      
+      console.log("Price zobaczmy: " + price);
 
       setCount((prevCount) => prevCount + price);
-      console.log(count)
+      console.log("count teraz: " + count);
 
       context.setData({
         ...context.data,
@@ -74,8 +75,9 @@ const Shop = () => {
         shop: updatedShop,
         count: count,
       });
-      console.log(context.data)
+      console.log(context.data);
     }
+    console.log("zobaczmy dates: " +  context.data.count)
   };
 
   return (
